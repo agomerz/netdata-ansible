@@ -1,18 +1,18 @@
 ---
+
 - name: Add repo and install package
-  hosts: all
-  become: true
-  tasks:
+  block:
 
-  - name: Add repository for Suse
-    community.general.zypper_repository:
-      name: "netdata"
-      repo: 'http://example.com/opensuse/repo/oss/'
-      state: present
-      auto_import_keys: true
+# Suse
+    - name: Add repository for Suse
+      community.general.zypper_repository:
+        name: "netdata"
+        repo: 'http://example.com/opensuse/repo/oss/'
+        state: present
+        auto_import_keys: true
 
-  - name: Install package on Suse
-    community.general.zypper:
-      name: netdata
-      state: present
-      notify: Restart Netdata
+    - name: Install package on Suse
+      community.general.zypper:
+        name: netdata
+        state: present
+        notify: Restart Netdata
