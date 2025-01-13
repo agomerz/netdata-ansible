@@ -21,3 +21,10 @@
         name: "netdata"
         state: present
       notify: Restart Netdata
+
+    - name: Install chart support on Debian if enabled
+      ansible.builtin.apt:
+        name: "netdata-plugin-chartsd"
+        state: present
+      notify: Restart Netdata
+      when: netdata_charts_enabled
