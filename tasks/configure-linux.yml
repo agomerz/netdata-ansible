@@ -5,6 +5,7 @@
     owner: root
     group: root
     mode: '0644'
+    when: netdata_manage_config
   notify: Restart Netdata
 
 - name: Configure Go Collector Plugins
@@ -30,17 +31,18 @@
     group: root
     mode: '0644'
   when:
-    - netdata_charts_enabled is defined and netdata_charts | length > 0
+    - netdata_charts_enabled
 
 - name: Configure Charts
   template:
-    src: "templates/charts/chart.j2"
+    src: "{{ netdata_custom_chart_dir }}/{{ item.name }}"
     dest: "/{{ netdata_chart_dir }}/{{ item.name }}"
     owner: root
     group: root
     mode: '0644'
+  loop: "{{ netdata_charts }}"
   loop_control:
     label: "{{ item.name | default(omit) }}"
   when:
-    - netdata_charts_enabled is defined and netdata_charts | length > 0
+    - netdata_charts_enabled and netdata_custom_charts_path != ""
   notify: Restart Netdata

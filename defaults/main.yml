@@ -5,7 +5,7 @@ role_version: 0.0.1
 netdata_release_version: "stable"
 
 # Define if we manage the Netdata configuration
-netdata_manage_config: true
+netdata_manage_config: false
 
 # Define if we install chart support
 netdata_charts_enabled: false
@@ -13,7 +13,14 @@ netdata_charts_enabled: false
 # Define Netdata config file path
 netdata_config_dir: "/etc/netdata"
 
+# Define the Netdata custom config directory
+netdata_custom_config_path: ""
+
+# Define the Netdata chart directory
 netdata_chart_dir: "/usr/libexec/netdata/charts.d/"
+
+# Define the Netdata custom chart directory
+netdata_custom_charts_path: ""
 
 # Allow for injecting a claim token if using Netdata Cloud
 netdata_claim_url: "https://app.netdata.cloud"
@@ -31,7 +38,3 @@ netdata_go_collector_plugins: []
   #     job:
   #       - name: local
   #         url: http://127.0.0.1:9090/metrics
-
-# Define config for enabled Charts
-netdata_charts: []
-# 
