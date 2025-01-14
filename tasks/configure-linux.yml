@@ -7,7 +7,7 @@
     mode: '0644'
   notify: Restart Netdata
 
-- name: Configure GO Collector Plugins
+- name: Configure Go Collector Plugins
   template:
     src: go.d/plugin.conf.j2
     dest: "{{ netdata_config_dir }}/go.d/{{ item.name }}.conf"
@@ -19,4 +19,28 @@
     label: "{{ item.name | default(omit) }}"    
   when:
     - netdata_go_collector_plugins is defined and netdata_go_collector_plugins|length > 0
+  notify: Restart Netdata
+
+- name: Enable Charts
+- name: Lay down charts.d.conf
+  copy:
+    content: 'enable_all_charts="yes"'
+    dest: "/etc/netdata/charts.d.conf"
+    owner: root
+    group: root
+    mode: '0644'
+  when:
+    - netdata_charts_enabled is defined and netdata_charts | length > 0
+
+- name: Configure Charts
+  template:
+    src: "templates/charts/chart.j2"
+    dest: "/{{ netdata_chart_dir }}/{{ item.name }}"
+    owner: root
+    group: root
+    mode: '0644'
+  loop_control:
+    label: "{{ item.name | default(omit) }}"
+  when:
+    - netdata_charts_enabled is defined and netdata_charts | length > 0
   notify: Restart Netdata
