@@ -35,4 +35,4 @@
         name: "netdata-plugin-chartsd"
         state: present
       notify: Restart Netdata
-      when: netdata_charts_enabled
+      when: netdata_manage_charts

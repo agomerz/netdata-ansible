@@ -8,7 +8,7 @@ netdata_release_version: "stable"
 netdata_manage_config: false
 
 # Define if we install chart support
-netdata_charts_enabled: false
+netdata_manage_charts: false
 
 # Define Netdata config file path
 netdata_config_dir: "/etc/netdata"
