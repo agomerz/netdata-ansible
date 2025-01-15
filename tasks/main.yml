@@ -4,7 +4,7 @@
   when: ansible_facts.os_family == "Debian"
 
 - name: Install the Netdata Linux agent on OpenSUSE
-  ansible.builtin.include_tasks: install-opensuse.yml
+  ansible.builtin.include_tasks: install-suse.yml
   when: ansible_facts.os_family == "Suse"
 
 - name: Configure the Netdata Linux agent

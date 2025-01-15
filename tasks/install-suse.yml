@@ -5,6 +5,11 @@
 - name: Add repo and install package
   block:
 
+    - name: Import Netdata GPG key
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://repository.netdata.cloud/netdatabot.gpg.key
+
     - name: Add repository for Suse
       community.general.zypper_repository:
         name: "netdata"
@@ -23,11 +28,11 @@
       community.general.zypper:
         name: netdata
         state: present
-        notify: Restart Netdata
+      notify: Restart Netdata
 
     - name: Install chart support on Suse if enabled
       community.general.zypper:
         name: netdata-plugin-chartsd
         state: present
-        notify: Restart Netdata
+      notify: Restart Netdata
       when: netdata_charts_enabled

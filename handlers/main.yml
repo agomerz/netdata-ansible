@@ -1,6 +1,6 @@
 ---
 - name: Restart Netdata
-  ansible.buitin.systemd:
+  ansible.builtin.systemd:
     name: netdata
     state: restarted
     enabled: true
