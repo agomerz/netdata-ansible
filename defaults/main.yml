@@ -17,7 +17,7 @@ netdata_config_dir: "/etc/netdata"
 netdata_custom_config_path: ""
 
 # Define the Netdata chart directory
-netdata_chart_dir: "/usr/libexec/netdata/charts.d/"
+netdata_chart_dir: "/usr/libexec/netdata/charts.d"
 
 # Define the Netdata custom chart directory
 netdata_custom_charts_path: ""
