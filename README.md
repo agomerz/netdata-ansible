@@ -3,6 +3,7 @@
 ## Tested on
 
 - Debian 12
+- SUSE Linux Enterprise Server 15
 
 ## Utilization
 
