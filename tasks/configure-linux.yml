@@ -1,5 +1,5 @@
 - name: Apply the netdata.conf.j2 template
-  template:
+  ansible.builtin.template:
     src: netdata.conf.j2
     dest: "{{ netdata_config_dir }}/netdata.conf"
     owner: root
@@ -9,7 +9,7 @@
   notify: Restart Netdata
 
 - name: Configure Go Collector Plugins
-  template:
+  ansible.builtin.template:
     src: go.d/plugin.conf.j2
     dest: "{{ netdata_config_dir }}/go.d/{{ item.name }}.conf"
     owner: root
@@ -17,14 +17,13 @@
     mode: '0644'
   loop: "{{ netdata_go_collector_plugins }}"
   loop_control:
-    label: "{{ item.name | default(omit) }}"    
+    label: "{{ item.name | default(omit) }}"
   when:
     - netdata_go_collector_plugins is defined and netdata_go_collector_plugins|length > 0
   notify: Restart Netdata
 
-- name: Enable Charts
 - name: Lay down charts.d.conf
-  copy:
+  ansible.builtin.copy:
     content: 'enable_all_charts="yes"'
     dest: "/etc/netdata/charts.d.conf"
     owner: root
@@ -34,7 +33,7 @@
     - netdata_charts_enabled
 
 - name: Configure Charts
-  template:
+  ansible.builtin.template:
     src: "{{ netdata_custom_chart_dir }}/{{ item.name }}"
     dest: "/{{ netdata_chart_dir }}/{{ item.name }}"
     owner: root

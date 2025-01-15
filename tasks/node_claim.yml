@@ -1,7 +1,7 @@
 ---
 
 - name: Create node claim file
-  template:
+  ansible.builtin.template:
     src: claim.conf.j2
     dest: "{{ netdata_config_dir }}/claim.conf"
     owner: root
