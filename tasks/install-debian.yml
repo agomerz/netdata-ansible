@@ -4,6 +4,13 @@
   block:
 
 # Debian
+
+    - name: Ensure gpg is installed.
+      ansible.builtin.apt:
+        name: gnupg
+        state: present
+        update_cache: true
+
     - name: Install Netdata repo key.
       ansible.builtin.apt_key:
         url: "{{ netdata_repository_key_url }}"
@@ -12,16 +19,15 @@
     - name: Add repository for Debian
       ansible.builtin.apt_repository:
         filename: "netdata"
-        repo: >
-          deb [by-hash=yes] {{ netdata_repository_url }}{{ netdata_release_version }}/ \
-          {{ ansible_distribution | lower }} {{ ansible_distribution_release }}/
+        repo: |
+          deb {{ netdata_repository_url }}{{ netdata_release_version }}/{{ ansible_facts.os_family | lower }}/ {{ ansible_distribution_release | lower }}/
         state: present
-        update_cache: true
 
     - name: Install package on Debian
       ansible.builtin.apt:
         name: "netdata"
         state: present
+        update_cache: true
       notify: Restart Netdata
 
     - name: Install chart support on Debian if enabled

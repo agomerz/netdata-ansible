@@ -29,7 +29,8 @@ netdata_claim_token: ""
 netdata_claim_rooms: ""
 
 # Define the Netdata repository URLs and associated key files
-netdata_repository_url: "https://repo.netdata.cloud/repos/"
+netdata_repository_url: "http://repo.netdata.cloud/repos/"
+netdata_repoconfig_url: "http://repo.netdata.cloud/repoconfig/"
 netdata_repository_key_url: "https://repo.netdata.cloud/netdatabot.gpg.key"
 
 # Define config for enabled Go integrations
