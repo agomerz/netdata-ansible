@@ -12,7 +12,9 @@
     - name: Add repository for Debian
       ansible.builtin.apt_repository:
         filename: "netdata"
-        repo: "deb [by-hash=yes] {{ netdata_repository_url }}{{ netdata_release_version }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }}/"
+        repo: >
+          deb [by-hash=yes] {{ netdata_repository_url }}{{ netdata_release_version }}/ \
+          {{ ansible_distribution | lower }} {{ ansible_distribution_release }}/
         state: present
         update_cache: true
 
