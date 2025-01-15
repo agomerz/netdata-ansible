@@ -1,5 +1,5 @@
 ---
-role_version: 0.0.1
+role_version: 1.0.0
 
 # Define the Netdata release version we install
 netdata_release_version: "stable"
