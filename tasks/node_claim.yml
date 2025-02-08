@@ -7,5 +7,5 @@
     owner: root
     group: root
     mode: '0644'
-  when: netdata_claim: true
+  when: netdata_claim
   notify: Restart Netdata
