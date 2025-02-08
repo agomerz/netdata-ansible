@@ -24,6 +24,7 @@ netdata_custom_charts_path: ""
 
 # Allow for injecting a claim token if using Netdata Cloud
 netdata_proxy: ""
+netdata_claim: false
 netdata_claim_url: "https://app.netdata.cloud"
 netdata_claim_token: ""
 netdata_claim_rooms: ""
