@@ -8,7 +8,7 @@ jobs:
 
   debian-test-job:
     runs-on: ubuntu-latest
-    # Test installation against Ubuntu 24.04
+    # Test installation against Debian Bookworm
     container:
       image: debian:bookworm
     steps:
@@ -18,6 +18,20 @@ jobs:
       - name: Test installation
         run: |
           apt-get -y update; apt-get -y upgrade; apt-get -y install ansible
+          ansible-playbook tests/test.yml
+
+  opensuse-test-job:
+    runs-on: ubuntu-latest
+    # Test installation against OpenSUSE Leap 15
+    container:
+      image: opensuse/leap:15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test installation
+        run: |
+          zypper -n refresh; zypper -n update; zypper -n install ansible
           ansible-playbook tests/test.yml
 
   ubuntu-test-job:
