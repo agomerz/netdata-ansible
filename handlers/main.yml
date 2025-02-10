@@ -5,3 +5,4 @@
     state: started
     daemon_reload: true
     enabled: true
+  when: ansible_service_mgr == "systemd"

@@ -17,7 +17,7 @@ jobs:
 
       - name: Test installation
         run: |
-          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible systemd
+          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible
           ansible-playbook tests/test.yml
 
   ubuntu-test-job:
@@ -31,5 +31,5 @@ jobs:
 
       - name: Test installation
         run: |
-          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible systemd
+          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible
           ansible-playbook tests/test.yml
