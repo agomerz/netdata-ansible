@@ -22,6 +22,7 @@ To install Netdata on a host and configure it to send metrics to a Netdata Cloud
   roles:
     - role: netdata
       vars:
+        netdata_claim: true
         netdata_claim_token: "YOUR_NETDATA_CLAIM_TOKEN"
 ```
 
@@ -32,6 +33,7 @@ To install Netdata on a host and enable custom configuration or charts, you can 
   roles:
     - role: netdata
       vars:
+        netdata_claim: true
         netdata_claim_token: "YOUR_NETDATA_CLAIM_TOKEN"
         netdata_manage_config: true
         netdata_manage_charts: true

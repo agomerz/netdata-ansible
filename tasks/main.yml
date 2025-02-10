@@ -17,4 +17,4 @@
 
 - name: Claim node if claim_token
   ansible.builtin.include_tasks: node_claim.yml
-  when: netdata_claim_token | length > 0
+  when: netdata_claim 
