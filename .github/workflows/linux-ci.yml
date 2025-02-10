@@ -1,0 +1,37 @@
+name: Container Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  debian-test-job:
+    runs-on: ubuntu-latest
+    # Test installation against Ubuntu 24.04
+    container:
+      image: debian:latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test installation
+        run: |
+          sudo apt-get update; sudo apt-get upgrade
+          sudo apt-get install ansible
+          ansible-playbook tests/test.yml
+
+  ubuntu-test-job:
+    runs-on: ubuntu-latest
+    # Test installation against Ubuntu 24.04
+    container:
+      image: ubuntu:24
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test installation
+        run: |
+          sudo apt-get update; sudo apt-get upgrade
+          sudo apt-get install ansible
+          ansible-playbook tests/test.yml
