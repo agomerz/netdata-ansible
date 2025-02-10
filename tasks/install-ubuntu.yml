@@ -3,8 +3,6 @@
 - name: Add repo and install package
   block:
 
-# Debian
-
     - name: Ensure gpg is installed.
       ansible.builtin.apt:
         name: gnupg

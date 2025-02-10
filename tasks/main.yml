@@ -5,11 +5,15 @@
 
 - name: Install the Netdata Linux agent on Debian
   ansible.builtin.include_tasks: install-debian.yml
-  when: ansible_facts.os_family == "Debian"
+  when: "'debian' in ansible_facts.distribution | lower"
+
+- name: Install the Netdata Linux agent on Ubuntu
+  ansible.builtin.include_tasks: install-Ubuntu.yml
+  when: "'ubuntu' in ansible_facts.distribution | lower"
 
 - name: Install the Netdata Linux agent on OpenSUSE
-  ansible.builtin.include_tasks: install-suse.yml
-  when: ansible_facts.os_family == "Suse"
+  ansible.builtin.include_tasks: install-opensuse.yml
+  when: "'opensuse' in ansible_facts.distribution | lower"
 
 - name: Configure the Netdata Linux agent
   ansible.builtin.include_tasks: configure-linux.yml
