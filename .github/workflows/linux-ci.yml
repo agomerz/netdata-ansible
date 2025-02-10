@@ -10,26 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     # Test installation against Ubuntu 24.04
     container:
-      image: debian:latest
+      image: debian:bookworm
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Test installation
         run: |
-          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible
+          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible systemd
           ansible-playbook tests/test.yml
 
   ubuntu-test-job:
     runs-on: ubuntu-latest
     # Test installation against Ubuntu 24.04
     container:
-      image: ubuntu:24
+      image: ubuntu:24.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Test installation
         run: |
-          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible
+          apt-get -y update; apt-get -y upgrade; apt-get -y install ansible systemd
           ansible-playbook tests/test.yml
