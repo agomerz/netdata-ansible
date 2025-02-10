@@ -15,6 +15,6 @@ jobs:
 
       - name: Run tests
         run: |
-          apt-get update
-          apt-get install ansible
+          sudo apt-get update; sudo apt-get upgrade
+          sudo apt-get install ansible
           ansible-playbook tests/test.yml
