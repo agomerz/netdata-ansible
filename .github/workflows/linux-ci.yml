@@ -1,4 +1,4 @@
-name: Container Test
+name: Integration Test
 
 on:
   push:
