@@ -27,6 +27,7 @@
       ansible.builtin.apt:
         name: "netdata"
         state: present
+        install_recommends: true
         update_cache: true
       notify: Restart Netdata
 
