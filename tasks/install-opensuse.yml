@@ -39,6 +39,7 @@
       community.general.zypper:
         name: netdata
         state: present
+        disable_recommends: false
       notify: Restart Netdata
 
     - name: Install chart support if enabled
